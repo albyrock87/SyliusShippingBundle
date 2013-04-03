@@ -30,12 +30,12 @@ class CalculatorChoiceType extends ObjectBehavior
         $this->beConstructedWith($choices);
     }
 
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Form\Type\CalculatorChoiceType');
     }
 
-    function it_should_be_a_form_type()
+    function it_is_a_form_type()
     {
         $this->shouldImplement('Symfony\Component\Form\FormTypeInterface');
     }
@@ -43,7 +43,7 @@ class CalculatorChoiceType extends ObjectBehavior
     /**
      * @param Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
      */
-    function it_should_define_calculator_choices($resolver)
+    function it_defines_calculator_choices($resolver)
     {
         $choices = array(
             'flat_rate'     => 'Flat rate per shipment',

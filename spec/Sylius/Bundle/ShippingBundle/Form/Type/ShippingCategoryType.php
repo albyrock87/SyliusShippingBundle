@@ -25,12 +25,12 @@ class ShippingCategoryType extends ObjectBehavior
         $this->beConstructedWith('ShippingCategory');
     }
 
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Form\Type\ShippingCategoryType');
     }
 
-    function it_should_be_a_form_type()
+    function it_is_a_form_type()
     {
         $this->shouldImplement('Symfony\Component\Form\FormTypeInterface');
     }
@@ -38,7 +38,7 @@ class ShippingCategoryType extends ObjectBehavior
     /**
      * @param Symfony\Component\Form\FormBuilder $builder
      */
-    function it_should_build_form_with_name_and_description_fields($builder)
+    function it_builds_form_with_name_and_description_fields($builder)
     {
         $builder
             ->add('name', 'text', ANY_ARGUMENT)
@@ -58,11 +58,10 @@ class ShippingCategoryType extends ObjectBehavior
     /**
      * @param Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
      */
-    function it_should_define_assigned_data_class($resolver)
+    function it_defines_assigned_data_class($resolver)
     {
         $resolver->setDefaults(array('data_class' => 'ShippingCategory'))->shouldBeCalled();
 
         $this->setDefaultOptions($resolver);
     }
 }
-

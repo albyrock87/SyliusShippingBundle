@@ -20,17 +20,17 @@ use PHPSpec2\ObjectBehavior;
  */
 class DefaultShippingCategory extends ObjectBehavior
 {
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Entity\DefaultShippingCategory');
     }
 
-    function it_should_implement_Sylius_shipping_category_interface()
+    function it_implements_Sylius_shipping_category_interface()
     {
         $this->shouldImplement('Sylius\Bundle\ShippingBundle\Model\ShippingCategoryInterface');
     }
 
-    function it_should_extend_Sylius_shipping_category_mapped_superclass()
+    function it_extends_Sylius_shipping_category_mapped_superclass()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Entity\ShippingCategory');
     }

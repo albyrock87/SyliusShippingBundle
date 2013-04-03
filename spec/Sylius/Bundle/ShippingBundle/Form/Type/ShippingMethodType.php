@@ -31,7 +31,7 @@ class ShippingMethodType extends ObjectBehavior
         $builder->getFormFactory()->willReturn($factory);
     }
 
-    function it_should_be_a_form_type()
+    function it_is_a_form_type()
     {
         $this->shouldImplement('Symfony\Component\Form\FormTypeInterface');
     }
@@ -39,7 +39,7 @@ class ShippingMethodType extends ObjectBehavior
     /**
      * @param Symfony\Component\Form\FormBuilder $builder
      */
-    function it_should_build_form_with_proper_fields($builder)
+    function it_builds_form_with_proper_fields($builder)
     {
         $builder->addEventSubscriber(ANY_ARGUMENT)->willReturn($builder);
         $builder
@@ -90,7 +90,7 @@ class ShippingMethodType extends ObjectBehavior
     /**
      * @param Symfony\Component\Form\FormBuilder $builder
      */
-    function it_should_add_build_shipping_method_event_subscriber($builder)
+    function it_adds_build_shipping_method_event_subscriber($builder)
     {
         $builder->add(ANY_ARGUMENTS)->willReturn($builder);
 
@@ -113,7 +113,7 @@ class ShippingMethodType extends ObjectBehavior
      * @param Symfony\Component\Form\Form $perItemForm
      * @param Sylius\Bundle\ShippingBundle\Calculator\PerItemRateCalculator $perItemRateCalculator
      */
-    function it_should_build_prototypes_forms_for_calculators(
+    function it_builds_prototypes_forms_for_calculators(
         $calculatorRegistry, $builder,
         $flatRateFormBuilder, $flatRateForm, $flatRateCalculator,
         $perItemFormBuilder, $perItemForm, $perItemRateCalculator
@@ -189,7 +189,7 @@ class ShippingMethodType extends ObjectBehavior
      * @param Symfony\Component\Form\Form $perItemRateForm
      * @param Symfony\Component\Form\FormView $perItemRateFormView
      */
-    function it_should_create_form_view_for_calculators_prototypes_when_building_view(
+    function it_creates_form_view_for_calculators_prototypes_when_building_view(
         $formView, $builder, $form, $flatRateForm, $flatRateFormView, $perItemRateForm, $perItemRateFormView
     )
     {
@@ -222,7 +222,7 @@ class ShippingMethodType extends ObjectBehavior
     /**
      * @param Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
      */
-    function it_should_define_assigned_data_class($resolver)
+    function it_defines_assigned_data_class($resolver)
     {
         $resolver->setDefaults(array('data_class' => 'ShippingMethod'))->shouldBeCalled();
 

@@ -21,22 +21,22 @@ use Sylius\Bundle\ShippingBundle\Model\ShipmentItemInterface;
  */
 class ShipmentItem extends ObjectBehavior
 {
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Model\ShipmentItem');
     }
 
-    function it_should_implement_Sylius_shipment_item_interface()
+    function it_implements_Sylius_shipment_item_interface()
     {
         $this->shouldImplement('Sylius\Bundle\ShippingBundle\Model\ShipmentItemInterface');
     }
 
-    function it_should_not_have_id_by_default()
+    function it_has_no_id_by_default()
     {
         $this->getId()->shouldReturn(null);
     }
 
-    function it_should_not_belong_to_shipment_by_default()
+    function it_does_not_belong_to_shipment_by_default()
     {
         $this->getShipment()->shouldReturn(null);
     }
@@ -44,7 +44,7 @@ class ShipmentItem extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Model\ShipmentInterface $shipment
      */
-    function it_should_allow_assigning_itself_to_shipment($shipment)
+    function it_allows_assigning_itself_to_shipment($shipment)
     {
         $this->setShipment($shipment);
         $this->getShipment()->shouldReturn($shipment);
@@ -53,7 +53,7 @@ class ShipmentItem extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Model\ShipmentInterface $shipment
      */
-    function it_should_allow_detaching_itself_from_shipment($shipment)
+    function it_allows_detaching_itself_from_shipment($shipment)
     {
         $this->setShipment($shipment);
         $this->getShipment()->shouldReturn($shipment);
@@ -62,7 +62,7 @@ class ShipmentItem extends ObjectBehavior
         $this->getShipment()->shouldReturn(null);
     }
 
-    function it_should_not_have_shippable_defined_by_default()
+    function it_has_no_shippable_defined_by_default()
     {
         $this->getShippable()->shouldReturn(null);
     }
@@ -70,29 +70,29 @@ class ShipmentItem extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Model\ShippableInterface $shippable
      */
-    function it_should_allow_defining_shippable($shippable)
+    function it_allows_defining_shippable($shippable)
     {
         $this->setShippable($shippable);
         $this->getShippable()->shouldReturn($shippable);
     }
 
-    function it_should_have_ready_state_by_default()
+    function it_has_ready_state_by_default()
     {
         $this->getShippingState()->shouldReturn(ShipmentItemInterface::STATE_READY);
     }
 
-    function its_state_should_be_mutable()
+    function its_state_is_mutable()
     {
         $this->setShippingState(ShipmentItemInterface::STATE_PENDING);
         $this->getShippingState()->shouldReturn(ShipmentItemInterface::STATE_PENDING);
     }
 
-    function it_should_initialize_creation_date_by_default()
+    function it_initializes_creation_date_by_default()
     {
         $this->getCreatedAt()->shouldHaveType('DateTime');
     }
 
-    function it_should_not_have_last_update_date_by_default()
+    function it_has_no_last_update_date_by_default()
     {
         $this->getUpdatedAt()->shouldReturn(null);
     }

@@ -21,33 +21,33 @@ use Sylius\Bundle\ShippingBundle\Model\ShipmentInterface;
  */
 class Shipment extends ObjectBehavior
 {
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Model\Shipment');
     }
 
-    function it_should_implement_Sylius_shipment_interface()
+    function it_implements_Sylius_shipment_interface()
     {
         $this->shouldImplement('Sylius\Bundle\ShippingBundle\Model\ShipmentInterface');
     }
 
-    function it_should_not_have_id_by_default()
+    function it_has_no_id_by_default()
     {
         $this->getId()->shouldReturn(null);
     }
 
-    function it_should_have_ready_state_by_default()
+    function it_has_ready_state_by_default()
     {
         $this->getState()->shouldReturn(ShipmentInterface::STATE_READY);
     }
 
-    function its_state_should_be_mutable()
+    function its_state_is_mutable()
     {
         $this->setState(ShipmentInterface::STATE_PENDING);
         $this->getState()->shouldReturn(ShipmentInterface::STATE_PENDING);
     }
 
-    function it_should_not_have_shipping_method_by_default()
+    function it_has_no_shipping_method_by_default()
     {
         $this->getMethod()->shouldReturn(null);
     }
@@ -55,13 +55,13 @@ class Shipment extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Model\ShippingMethodInterface $shippingMethod
      */
-    function its_shipping_method_should_be_mutable($shippingMethod)
+    function its_shipping_method_is_mutable($shippingMethod)
     {
         $this->setMethod($shippingMethod);
         $this->getMethod()->shouldReturn($shippingMethod);
     }
 
-    function it_should_initialize_items_collection_by_default()
+    function it_initializes_items_collection_by_default()
     {
         $this->getItems()->shouldHaveType('Doctrine\Common\Collections\Collection');
     }
@@ -69,7 +69,7 @@ class Shipment extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Model\ShipmentItemInterface $shipmentItem
      */
-    function it_should_add_items_properly($shipmentItem)
+    function it_adds_items($shipmentItem)
     {
         $this->hasItem($shipmentItem)->shouldReturn(false);
 
@@ -82,7 +82,7 @@ class Shipment extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Model\ShipmentItemInterface $shipmentItem
      */
-    function it_should_remove_items_properly($shipmentItem)
+    function it_removes_item($shipmentItem)
     {
         $this->hasItem($shipmentItem)->shouldReturn(false);
 
@@ -95,23 +95,23 @@ class Shipment extends ObjectBehavior
         $this->hasItem($shipmentItem)->shouldReturn(false);
     }
 
-    function it_should_not_have_tracking_code_by_default()
+    function it_has_no_tracking_code_by_default()
     {
         $this->getTracking()->shouldReturn(null);
     }
 
-    function its_tracking_code_should_be_mutable()
+    function its_tracking_code_is_mutable()
     {
         $this->setTracking('5346172074');
         $this->getTracking()->shouldReturn('5346172074');
     }
 
-    function it_should_not_be_tracked_by_default()
+    function it_is_not_tracked_by_default()
     {
         $this->shouldNotBeTracked();
     }
 
-    function it_should_be_tracked_only_if_tracking_code_is_defined()
+    function it_is_tracked_only_if_tracking_code_is_defined()
     {
         $this->shouldNotBeTracked();
         $this->setTracking('5346172074');
@@ -120,12 +120,12 @@ class Shipment extends ObjectBehavior
         $this->shouldNotBeTracked();
     }
 
-    function it_should_initialize_creation_date_by_default()
+    function it_initializes_creation_date_by_default()
     {
         $this->getCreatedAt()->shouldHaveType('DateTime');
     }
 
-    function it_should_not_have_last_update_date_by_default()
+    function it_has_no_last_update_date_by_default()
     {
         $this->getUpdatedAt()->shouldReturn(null);
     }

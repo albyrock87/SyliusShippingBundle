@@ -25,17 +25,17 @@ class ShippingCategoryEntityType extends ObjectBehavior
         $this->beConstructedWith('ShippingCategory');
     }
 
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Form\Type\ShippingCategoryEntityType');
     }
 
-    function it_should_be_a_form_type()
+    function it_is_a_form_type()
     {
         $this->shouldImplement('Symfony\Component\Form\FormTypeInterface');
     }
 
-    function it_should_have_entity_type_as_parent()
+    function it_has_entity_type_as_parent()
     {
         $this->getParent()->shouldReturn('entity');
     }
@@ -43,7 +43,7 @@ class ShippingCategoryEntityType extends ObjectBehavior
     /**
      * @param Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver
      */
-    function it_should_define_assigned_class_name($resolver)
+    function it_defines_assigned_class_name($resolver)
     {
         $resolver->setDefaults(array('class' => 'ShippingCategory'))->shouldBeCalled();
 

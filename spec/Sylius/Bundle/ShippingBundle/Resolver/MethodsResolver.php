@@ -29,31 +29,31 @@ class MethodsResolver extends ObjectBehavior
         $this->beConstructedWith($methodRepository);
     }
 
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Resolver\MethodsResolver');
     }
 
-    function it_should_implement_Sylius_shipping_methods_resolver_interface()
+    function it_implements_Sylius_shipping_methods_resolver_interface()
     {
-        $this->shouldImplement('Sylius\Bundle\ShippingBundle\Resolver\MethodsResolver');
+        $this->shouldImplement('Sylius\Bundle\ShippingBundle\Resolver\MethodsResolverInterface');
     }
 
     /**
-     * @param Sylius\Bundle\ShippingBundle\Model\ShippablesAwareInterface $shippablesAware
+     * @param Sylius\Bundle\ShippingBundle\Model\ShippingSubjectInterface $subject
      * @param Sylius\Bundle\ShippingBundle\Model\ShippingMethodInterface  $method1
      * @param Sylius\Bundle\ShippingBundle\Model\ShippingMethodInterface  $method2
      * @param Sylius\Bundle\ShippingBundle\Model\ShippingMethodInterface  $method3
      */
-    function it_should_return_all_methods_supporting_given_shippable_aware($methodRepository, $shippablesAware, $method1, $method2, $method3)
+    function it_returns_all_methods_supporting_given_subject($methodRepository, $subject, $method1, $method2, $method3)
     {
         $methods = array($method1, $method2, $method3);
         $methodRepository->findBy(array('enabled' => true))->shouldBeCalled()->willReturn($methods);
 
-        $method1->supports($shippablesAware)->shouldBeCalled()->willReturn(true);
-        $method2->supports($shippablesAware)->shouldBeCalled()->willReturn(true);
-        $method3->supports($shippablesAware)->shouldBeCalled()->willReturn(false);
+        $method1->supports($subject)->shouldBeCalled()->willReturn(true);
+        $method2->supports($subject)->shouldBeCalled()->willReturn(true);
+        $method3->supports($subject)->shouldBeCalled()->willReturn(false);
 
-        $this->getSupportedMethods($shippablesAware)->shouldReturn(array($method1, $method2));
+        $this->getSupportedMethods($subject)->shouldReturn(array($method1, $method2));
     }
 }

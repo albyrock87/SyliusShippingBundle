@@ -20,17 +20,17 @@ use PHPSpec2\ObjectBehavior;
  */
 class CalculatorRegistry extends ObjectBehavior
 {
-    function it_should_be_initializable()
+    function it_is_initializable()
     {
         $this->shouldHaveType('Sylius\Bundle\ShippingBundle\Calculator\Registry\CalculatorRegistry');
     }
 
-    function it_should_implement_Sylius_shipping_calculator_registry()
+    function it_implements_Sylius_shipping_calculator_registry()
     {
         $this->shouldImplement('Sylius\Bundle\ShippingBundle\Calculator\Registry\CalculatorRegistryInterface');
     }
 
-    function it_should_initialize_calculators_array_by_default()
+    function it_initializes_calculators_array_by_default()
     {
         $this->getCalculators()->shouldReturn(array());
     }
@@ -38,7 +38,7 @@ class CalculatorRegistry extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Calculator\CalculatorInterface $calculator
      */
-    function it_should_register_calculator_under_given_name($calculator)
+    function it_registers_calculator_under_given_name($calculator)
     {
         $this->hasCalculator('default')->shouldReturn(false);
         $this->registerCalculator('default', $calculator);
@@ -48,7 +48,7 @@ class CalculatorRegistry extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Calculator\CalculatorInterface $calculator
      */
-    function it_should_complain_if_trying_to_register_calculator_with_taken_name($calculator)
+    function it_throws_exception_if_trying_to_register_calculator_with_taken_name($calculator)
     {
         $this->registerCalculator('default', $calculator);
 
@@ -61,7 +61,7 @@ class CalculatorRegistry extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Calculator\CalculatorInterface $calculator
      */
-    function it_should_unregister_calculator_with_given_name($calculator)
+    function it_unregisters_calculator_with_given_name($calculator)
     {
         $this->registerCalculator('default', $calculator);
         $this->hasCalculator('default')->shouldReturn(true);
@@ -73,13 +73,13 @@ class CalculatorRegistry extends ObjectBehavior
     /**
      * @param Sylius\Bundle\ShippingBundle\Calculator\CalculatorInterface $calculator
      */
-    function it_should_retrieve_registered_calculator_by_name($calculator)
+    function it_provides_registered_calculator_by_name($calculator)
     {
         $this->registerCalculator('default', $calculator);
         $this->getCalculator('default')->shouldReturn($calculator);
     }
 
-    function it_should_complain_if_trying_to_retrieve_non_existing_calculator()
+    function it_throws_exception_if_trying_to_retrieve_non_existing_calculator()
     {
         $this
             ->shouldThrow('Sylius\Bundle\ShippingBundle\Calculator\Registry\NonExistingCalculatorException')
